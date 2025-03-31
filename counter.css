@@ -1,0 +1,366 @@
+
+@font-face {
+    font-family: "kofe";
+    src: url(font/ReemKufi-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: "cairo";
+    src: url(font/Cairo-Regular.ttf);
+}
+
+/* إضافة خط قرآني */
+@font-face {
+    font-family: "Amiri-Quran";
+    src: url("https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap");
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #333;
+    width: 100%;
+    text-align: center;
+    font-family: "cairo", sans-serif;
+    color: white;
+}
+
+nav {
+    padding: 12px 0;
+    width: 100%;
+    background-color: #813333;
+    color: #fff;
+    text-align: center;
+}
+
+nav h1 {
+    font-size: 27px;
+    font-family: "kofe", sans-serif;
+}
+
+.zikr-container {
+    margin-top: 50px;
+    font-size: 28px;
+    display: block;
+    width: 90%;
+    margin: 20px auto;
+    border: 3px solid #813333;
+    padding: 30px 0;
+    border-radius: 9px;
+}
+
+.counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 80px; /* زيادة الحشو لجعل الزر أكبر */
+    font-size: 80px; /* زيادة حجم الخط */
+    border: none;
+    margin-bottom: 90px;
+    border-radius: 50%;
+    background-color: #813333;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px; /* زيادة الهوامش */
+    min-width: 200px; /* الحد الأدنى للعرض */
+    min-height: 200px; /* الحد الأدنى للارتفاع */
+    transition: all 0.3s ease; /* تأثير سلس عند التكبير/التصغير */
+}
+
+.btn:active {
+    scale: 0.97;
+    transition: 0.2s;
+}
+
+.btn:focus,
+.btn2:focus,
+.font-controls button:focus,
+.splash-screen .skip-btn:focus   {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+nav{
+
+    padding-top: 18px;
+    padding-bottom: 12px;
+    width: 100%;
+    background-color: #813333;
+    color: #333;
+}
+
+nav h1{
+    margin-left: 190px;
+    font-size: 27px;
+    line-height: 27px;
+    transform: translateY(28%);
+    font-family: "kofe" ,sans-serif;
+}
+
+nav a i{
+    color: #333;
+    font-size: 30px;
+    margin-left: 23px;
+    transform: translateY(-55%);
+    padding: 0;
+}
+
+.btn2 {
+    padding: 15px 30px; /* زيادة الحشو */
+    font-size: 20px; /* زيادة حجم الخط */
+    border: none;
+    border-radius: 50px;
+    background-color: #813333;
+    color: white;
+    cursor: pointer;
+    margin: 20px; /* زيادة الهوامش */
+}
+
+.btn2:active {
+    scale: 0.98;
+    transition: 0.2s;
+}
+
+/* تثبيت أزرار التحكم بحجم الخط في أسفل الشاشة */
+.font-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #333; /* لون الخلفية */
+    padding: 10px; /* زيادة الحشو */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3); /* إضافة ظل */
+}
+
+.font-controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 50px;
+    background-color: #813333;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.font-controls button:active {
+    scale: 0.98;
+    transition: 0.2s;
+}
+
+/* تصميم النافذة المنبثقة */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #813333;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    z-index: 1000;
+    width: 300px;
+}
+
+.popup p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.popup button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #813333;
+    cursor: pointer;
+}
+
+.popup button:hover {
+    background-color: #f0f0f0;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+/* شاشة التخطي */
+/* شاشة التخطي */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001; /* تأكد من أنها فوق كل العناصر */
+    opacity: 1;
+    transition: opacity 0.5s ease; /* تأثير التلاشي */
+}
+
+.splash-screen.hide {
+    opacity: 0;
+    pointer-events: none; /* تعطيل التفاعل مع العنصر */
+}
+
+.splash-screen img {
+    width: 100%; /* تغطية عرض الشاشة بالكامل */
+    height: 100%; /* تغطية ارتفاع الشاشة بالكامل */
+    object-fit: cover; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    position: absolute; /* وضع الصورة خلف العناصر الأخرى */
+    top: 0;
+    left: 0;
+    z-index: -1; /* إرسال الصورة إلى الخلف */
+}
+
+.splash-screen .verse {
+    font-size: 25px ;
+    text-align: center;
+    padding: 10px 16px; /* زيادة الحشو */
+    color: #fff; /* لون نص أبيض */
+    font-family: "Amiri Quran", serif; /* استخدام الخط القرآني */
+    animation: fadeIn 1s ease; /* ظهور النص بسرعة */
+    z-index: 1; /* التأكد من ظهور النص فوق الصورة */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* إضافة ظل للنص */
+    background-color: rgba(0, 0, 0, 0.5); /* خلفية شبه شفافة */
+    border-radius: 10px; /* زوايا مدورة */
+}
+
+.splash-screen .verse-info {
+    font-size: 14px;
+    color: #fff; /* لون نص أبيض */
+    margin-top: 10px;
+    font-family: "cairo", sans-serif;
+    z-index: 1; /* التأكد من ظهور النص فوق الصورة */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* إضافة ظل للنص */
+    background-color: rgba(0, 0, 0, 0.5); /* خلفية شبه شفافة */
+    padding: 10px 20px; /* زيادة الحشو */
+    border-radius: 10px; /* زوايا مدورة */
+}
+
+.splash-screen .skip-btn {
+    margin-top: 187px;
+    padding: 19px 30px;
+    width: 50%;
+    font-size: 16px;
+    border: 2px solid #fff; /* لون حدود أبيض */
+    border-radius: 50px;
+    background-color: #3b3a3a;
+    color: #fff; /* لون نص أبيض */
+    font-family: "cairo";
+    cursor: pointer;
+    animation: fadeIn 3s ease; /* ظهور الزر بسرعة */
+    z-index: 1; /* التأكد من ظهور الزر فوق الصورة */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* إضافة ظل للنص */
+    transition: background-color 0.3s ease, color 0.3s ease; /* تأثير سلس */
+}
+
+.splash-screen .skip-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* خلفية شبه شفافة عند التمرير */
+    color: #fff; /* لون نص أبيض */
+}
+
+.splash-screen .skip-btn:active {
+    scale: 0.98;
+    transition: 0.2s;
+}
+
+/* ظهور العناصر بسرعة */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (min-width:768px) {
+
+    .splash-screen .verse{
+        font-size: 40px;
+    }
+
+    .splash-screen .verse-info{
+        font-size: 20px;
+    }
+
+    .splash-screen .skip-btn{
+        font-size: 22px;
+        margin-top: 195px;
+    }
+    
+}
+/* التجاوب مع الشاشات الصغيرة */
+/* للأجهزة اللوحية الكبيرة (أقل من 992px) */
+@media (max-width: 992px) {
+    .btn {
+        padding: 70px;
+        font-size: 70px;
+    }
+}
+
+/* للأجهزة اللوحية المتوسطة (أقل من 768px) */
+@media (max-width: 768px) {
+    .btn {
+        padding: 50px;
+        font-size: 50px;
+        min-width: 130px;
+        min-height: 130px;
+    }
+
+    .zikr-container {
+        font-size: 22px;
+        padding: 20px;
+    }
+
+    nav h1 {
+        font-size: 24px;
+        margin-left: 0;
+    }
+}
+
+/* للهواتف الصغيرة (أقل من 480px) */
+@media (max-width: 480px) {
+    .btn {
+        padding: 40px;
+        font-size: 40px;
+        min-width: 100px;
+        min-height: 100px;
+    }
+
+    .zikr-container {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    nav h1 {
+        font-size: 22px;
+    }
+}

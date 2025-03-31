@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="counter.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+   <style>
+    @font-face {
+    font-family: "kofe";
+    src: url(font/ReemKufi-VariableFont_wght.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+body{
+    background: linear-gradient(to bottom, #c68551 140px, #96add6 400px);
+    overflow: hidden;
+}
+.image {
+    background: linear-gradient(to bottom, #c68551 140px, #96add6 400px);
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    filter: blur(2px);
+        z-index: -1; /* تأكد أن الأزرار فوق الصورة */
+}
+
+h1 {
+    z-index: 1000;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 250px;
+    font-size: 62px;
+    font-family: "kofe";
+    color: #ad774c;
+}
+
+.container {
+    display: grid;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.category-btn {
+    width: 300px;
+    max-width: 700px;
+    padding: 15px;
+    background: #c68551;
+    color: #2d3436;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.category-btn i {
+    font-size: 24px;
+    color: #3c537a;
+}
+
+.category-btn:hover {
+    background: #2d3436;
+    color: white;
+    transform: scale(1.05);
+}
+
+@media (min-width:412px) and (max-width:414px){
+    
+    h1{
+        top: 290px;
+        font-size: 64px;
+    }
+
+    .container{
+        margin-top: 50px;
+    }
+    
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+
+    body{
+    background: linear-gradient(to bottom, #c68551 160px, #96add6 400px);
+    overflow: hidden;
+}
+    h1{
+        font-size: 120px ;
+    }
+    .container{
+        margin-top: 630px;
+
+    }
+
+    .category-btn{
+        font-size: 29px;
+        width: 500px;
+    }
+
+    .category-btn i {
+        margin-right: 10px;
+        font-size: 29px;
+    }
+    
+    #img2{
+        display: none;
+    }
+}
+/* تحسين الاستجابة للشاشات المختلفة */
+
+@media (min-width:768px) {
+
+    h1{
+        top: 200px;
+    }
+
+    .container{
+        margin-top: 530px;
+    }
+    
+}
+
+/* تصميم زر الثلاث نقاط */
+.menu-container {
+    position: absolute;
+    top: 18px; /* حدد المسافة من الأعلى */
+    right: 18px; /* حدد المسافة من اليمين */
+    z-index: 100; /* تأكد من أن الزر في الواجهة */
+}
+
+.menu-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 50px !important;
+    color: #333 !important; /* لون الأيقونة */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.menu-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* إضافة تأثير عند التمرير فوق الزر */
+}
+
+.menu-btn:focus {
+    outline: none; /* إزالة التحديد عند النقر */
+}
+
+.menu-btn i {
+    font-size: 26px;
+    color: #2d3436; /* تغيير لون الأيقونة */
+}
+
+.menu-btn:focus    {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+   </style>
+</head>
+<body>
+
+    <div class="splash-screen" id="splashScreen">
+        <img id="splashImage" src="" alt="صورة"> <!-- تمت إضافة id هنا -->
+        <div class="verse" id="verse"></div>
+        <div class="verse-info" id="verseInfo"></div>
+        <button class="skip-btn" onclick="hideSplashScreen()">تخطي</button>
+    </div>
+
+    <!-- شاشة تحميل -->
+    <div class="loading-screen">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="image"></div>
+    <!-- زر الثلاث نقاط -->
+<div class="menu-container">
+    <button class="menu-btn" onclick="redirectToPage()">
+        <i class="fas fa-ellipsis-v"></i> <!-- أيقونة ثلاث نقاط -->
+    </button>
+</div>
+
+ 
+    <img src="image/شعار_2-removebg-preview.png" alt="شعار التطبيق" width="100%" id="img2">
+
+    <h1>تسابيح</h1>
+
+    <div class="container">
+        <a href="counter.html" class="category-btn"><i class="fas fa-praying-hands"></i> عداد التسبيح</a>
+        <a href="Prayer_times.html" class="category-btn"><i class="fas fa-clock"></i> أفضل أوقات الدعاء</a>
+        <a href="Prayers.html" class="category-btn"><i class="fas fa-book"></i>أدعية مأثورة</a>
+        <a href="quran.html" class="category-btn"><i class="fas fa-quran"></i> مقتطفات قرآنية</a>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(() => {
+                document.querySelector(".loading-screen").classList.add("hidden");
+            }, 600); // إخفاء شاشة التحميل بعد 600 مللي ثانية
+
+            // اختيار صورة عشوائية وتعيينها عند تحميل الصفحة
+            const images = [
+                "image/splach1.jpg",
+                "image/splach2.jpg",
+                "image/splash3.jpg",
+                "image/splash4.jpg",
+                "image/splach5.jpg",
+                "image/splach7.jpg",
+                "image/splach8.jpg",
+                "image/splach9.jpg",
+                "image/splach10.jpg"
+                // أضف المزيد من المسارات هنا
+            ];
+
+            // اختيار صورة عشوائية
+            function getRandomImage() {
+                const randomIndex = Math.floor(Math.random() * images.length);
+                return images[randomIndex];
+            }
+
+            // تعيين الصورة العشوائية
+            const splashImage = document.getElementById("splashImage");
+            splashImage.src = getRandomImage();
+        });
+
+        // عند الضغط على زر "ابدأ"، يتم تشغيل شاشة التحميل قبل الانتقال
+        document.getElementById("startButton").addEventListener("click", function (event) {
+            event.preventDefault(); // منع الانتقال المباشر
+            let destination = "counter.html"; 
+
+            document.querySelector(".loading-screen").classList.remove("hidden"); // إظهار شاشة التحميل
+            document.body.classList.add("fade-out"); // تشغيل تأثير التلاشي
+
+            setTimeout(() => {
+                window.location.href = destination;
+            }, 1500); // تأخير الانتقال
+        });
+
+        // إخفاء شاشة التخطي
+        function hideSplashScreen() {
+            document.getElementById("splashScreen").classList.add("hide");
+        }
+
+        // دالة لتوجيه المستخدم إلى صفحة أخرى عند الضغط على الزر
+function redirectToPage() {
+    window.location.href = "informition.html"; // استبدل "page.html" برابط الصفحة التي تريد الانتقال إليها
+}
+
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

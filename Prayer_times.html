@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>أفضل أوقات الدعاء</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        body {
+            background-color: #96add6;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #ad774c;
+        }
+        #hr2 {
+            width: 88%;
+            border: 1.7px solid #ad774c;
+            margin-bottom: 26px;
+        }
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .card {
+            background: #ad774c;
+            width: 100%;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #fff;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .card.hidden {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        .card h2 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .card p {
+            font-size: 18px;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+        .buttons {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .buttons button {
+            background: #96add6;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .buttons button:hover {
+            background: #f0f0f0;
+        }
+        
+        #go {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 48px;
+        height: 48px;
+        background-color: white; /* لون الخلفية */
+        border-radius: 50%; /* لجعلها دائرية */
+        display: flex;
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s, transform 0.2s;
+    }
+
+    #go i {
+        color: #ad774c;
+        font-size: 24px;
+    }
+
+    #go:hover {
+        background-color: #8d5e3b; /* لون عند التمرير */
+        transform: scale(1.1);
+    }
+
+    #go:focus    {
+            -webkit-tap-highlight-color: transparent;
+        }
+    @media screen and (max-width: 600px) {
+    h1 {
+        font-size: 56px;
+    }
+
+    .search-box {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    /* تنظيم البطاقات بحيث تظهر بطاقتين في السطر */
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(45%, 1fr)); /* تعيين الأعمدة */
+    }
+
+    .card {
+        width: 100%; /* تأكد من أن البطاقات تأخذ 100% من عرض العمود */
+    }
+}
+
+/* تحسين العرض للأجهزة الكبيرة */
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 28px; /* إبقاء حجم العنوان ثابتًا في الشاشات الصغيرة */
+    }
+
+    .search-box {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    /* تنظيم البطاقات بحيث تظهر بطاقتين في السطر */
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(45%, 1fr)); /* تعيين الأعمدة */
+    }
+
+    .card {
+        width: 100%; /* تأكد من أن البطاقات تأخذ 100% من عرض العمود */
+    }
+}
+
+/* تحسين العرض للأجهزة الكبيرة */
+@media screen and (min-width: 870px) {
+    .search-box {
+        width: 600px;
+        font-size: 16px;
+    }
+
+    .cards-container {
+        max-width: 900px;
+    }
+}
+
+
+/* تكبير خط العنوان في الشاشات الأكبر */
+@media screen and (min-width: 1024px) {
+    h1 {
+        font-size: 39px; /* تكبير العنوان فقط في الشاشات الكبيرة */
+    }
+
+    /* تعريض البطاقات في الشاشات الكبيرة */
+    .card {
+        max-width: 500px; /* جعل البطاقات أعرض */
+    }
+
+    .card h2{
+        font-size: 29px;
+    }
+    .card p{
+        font-size: 23px;
+    }
+
+    .search-box::placeholder{
+        font-size: 21px;
+    }
+
+}
+
+@media (min-width:768px) and (max-width:1102px) {
+    #go{
+            bottom: 40px;
+            left: 40px;
+            width: 61px;
+            height: 61px;
+
+        } 
+
+        #go i{
+            font-size: 30px;
+        }
+}
+    
+
+    </style>
+</head>
+<body>
+    
+        <a href="index.html" id="go"><i class="fa-solid fa-arrow-left"></i></a>
+  
+       <h1>📿 أفضل أوقات الدعاء 📿</h1>
+    <hr id="hr2">
+    <div class="cards-container">
+        <!-- البطاقات الحالية -->
+        <div class="card">
+            <h2> 🧎‍♂️في السجود</h2>
+            <p>قال النبي ﷺ: "أقرب ما يكون العبد من ربه وهو ساجد فأكثروا الدعاء".</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🌅 قبل الفجر</h2>
+            <p>وقت السحر هو وقت استجابة الدعاء، حيث ينزل الله إلى السماء الدنيا.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🕌 بعد الأذان</h2>
+            <p>الدعاء بين الأذان والإقامة لا يرد.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🕌  بين الأذان والإقامة</h2>
+            <p>من الأوقات المستجابة التي أوصى بها النبي ﷺ.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🌙 ليلة القدر</h2>
+            <p>خير ليلة في السنة، الدعاء فيها مستجاب بإذن الله.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🌂 عند نزول المطر</h2>
+            <p>قال النبي ﷺ: "ثنتان ما تردان: الدعاء عند النداء، وتحت المطر".</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🕋 عند رؤية الكعبة</h2>
+            <p>وقت مبارك مستجاب فيه الدعاء بإذن الله.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🕌 بين الخطبتين يوم الجمعة</h2>
+            <p>من الأوقات التي تستجاب فيها الدعوات.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🌞 آخر ساعة من الجمعة</h2>
+            <p>يوم الجمعة فيه ساعة لا يرد فيها الدعاء، وهي قبل المغرب بساعة.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🌅 وقت الفجر</h2>
+            <p>من الأوقات التي تتنزل فيها الرحمة وتستجاب الدعوات.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>😔 عند الشدائد</h2>
+            <p>قال الله تعالى: "أَمَّنْ يُجِيبُ الْمُضْطَرَّ إِذَا دَعَاهُ".</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🐓 عند سماع صياح الديك</h2>
+            <p>قال النبي ﷺ: "إذا سمعتم صياح الديك فاسألوا الله من فضله".</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🛩 عند السفر</h2>
+            <p>من دعوات السفر المستجابة: "اللهم أنت الصاحب في السفر".</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🕌 يوم عرفة</h2>
+            <p>خير يوم للدعاء، قال النبي ﷺ: "خير الدعاء دعاء يوم عرفة".</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>💧 عند شرب ماء زمزم</h2>
+            <p>قال النبي ﷺ: "ماء زمزم لما شرب له"، فيستحب الدعاء عند شربه.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🧎🏻‍♂️بعد الصلوات المفروضة</h2>
+            <p>من أوقات استجابة الدعاء بعد التشهد الأخير وقبل التسليم.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>✨ في شهر رمضان</h2>
+            <p>رمضان كله شهر استجابة، وأفضلها ليلة القدر.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🤧عند زيارة المريض</h2>
+            <p>دعاء المريض مستجاب بإذن الله.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🕌 عند التكبير في العيد</h2>
+            <p>وقت مبارك للدعاء وطلب الرحمة من الله.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>
+      📖
+     بعد ختم القرآن</h2>
+            <p>لحظة ختم القرآن من أعظم لحظات استجابة الدعاء.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <!-- إضافة بطاقات جديدة -->
+        <div class="card">
+            <h2>
+      📖
+      بعد قراءة سورة الفاتحة</h2>
+            <p>سورة الفاتحة من أعظم سور القرآن وأوقات استجابتها مميزة.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🌙 في العشر الأواخر من رمضان</h2>
+            <p>في هذه الأيام الفضيلة تزداد فرص استجابة الدعاء.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+             <div class="card">
+            <h2>🕋 عند الوقوف في عرفات</h2>
+            <p>لحظة وقوف المسلم في عرفات هي من أعظم لحظات الدعاء.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🕌 عند دخول المسجد</h2>
+            <p>الدعاء عند دخول المسجد مستجاب بإذن الله.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🕌 عند الخروج من المسجد</h2>
+            <p>الدعاء عند الخروج من المسجد مستجاب بإذن الله.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🌅 عند الاستيقاظ من النوم</h2>
+            <p>الدعاء عند الاستيقاظ من النوم مستجاب بإذن الله.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2> 🛌 عند النوم</h2>
+            <p>الدعاء قبل النوم مستجاب بإذن الله.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🕌 عند سماع الأذان</h2>
+            <p>الدعاء عند سماع الأذان مستجاب بإذن الله.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2> 🌙 عند رؤية الهلال</h2>
+            <p>الدعاء عند رؤية الهلال مستجاب بإذن الله.</p>
+            <hr style="margin-top: 18px;">
+            <div class="buttons">
+                <button onclick="copyText(this)">📋 نسخ</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll(".card");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        entry.target.classList.remove("hidden");
+                    } else {
+                        entry.target.classList.remove("visible");
+                        entry.target.classList.add("hidden");
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+
+        function copyText(button) {
+            const text = button.parentElement.previousElementSibling.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("تم نسخ النص!");
+            });
+        }
+    </script>
+</body>
+</html>

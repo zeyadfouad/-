@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    <title>Home</title>
+    <title>تطبيق تسابيح</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 0 20px;
+        }
+
+        /* الخلفية التدريجية - سيتم تعديل الارتفاع ديناميكيًا */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--background-height, 210vh); /* متغير سيتم تعديله */
+            background: linear-gradient(to bottom, rgb(173, 119, 76) 160px, rgb(150, 173, 214));
+            filter: blur(1px);
+            z-index: 1;
+        }
+
+        /* البطاقة الزجاجية */
+        .glass-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 900px; /* حد أقصى للعرض على الشاشات الكبيرة */
+            padding: 40px;
+            color: #222;
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            z-index: 2;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 58px;
+            margin-top: 20px;
+        }
+
+        /* تنسيق العناوين */
+        .glass-card h1 {
+            font-size: clamp(25px, 3vw, 36px); /* تكبير تدريجي للعناوين */
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            margin-bottom: 20px;
+        }
+
+        /* تنسيق النصوص */
+        .glass-card p {
+            font-size: clamp(18px, 2vw, 24px); /* تكبير تدريجي للنصوص */
+            color: #222;
+            padding: 15px;
+            direction: rtl;
+            border-radius: 10px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        /* تحسين التصميم للهواتف */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .glass-card {
+                padding: 25px;
+                margin-top: 10px;
+            }
+
+            a i {
+                font-size: 24px;
+                margin-left: 15px;
+                margin-right: 0;
+                transform: none;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: bolder;
+            color: #222;
+            display: inline-flex;
+            align-items: center;
+            font-size: clamp(16px, 2vw, 20px); /* تكبير تدريجي للروابط */
+        }
+
+        a i {
+            color: #333;
+            font-size: clamp(16px, 2vw, 20px); /* تكبير تدريجي للأيقونات */
+            margin-left: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        a:hover i {
+            transform: translateX(5px);
+        }
+
+        /* زر الرجوع */
+        #go {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 48px;
+            height: 48px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        #go i {
+            color: #ad774c;
+            font-size: 24px;
+            margin-right: 9px;
+        }
+
+        #go:hover {
+            background-color: #8d5e3b;
+            transform: scale(1.1);
+        }
+
+        #go:focus {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* تحسينات للشاشات الكبيرة */
+        @media (min-width: 1200px) {
+            .glass-card {
+                padding: 50px;
+            }
+            
+            .glass-card p {
+                line-height: 2;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- سيتم تعديل ارتفاع الخلفية عبر الجافاسكريبت -->
+    <div class="background"></div>
+
+    <!-- زر الرجوع -->
+    <a href="index.html" id="go"><i class="fa-solid fa-arrow-left"></i></a>
+
+    <!-- البطاقة الأولى -->
+    <div class="glass-card">
+        <h1>تطبيق تسابيح – رفيقك اليومي للذكر والدعاء 📿</h1>
+        <hr>
+        <p>تطبيق تسابيح هو رفيقك اليومي للذكر والدعاء، حيث يوفر لك عداد تسبيح متقدم مع إمكانية التكبير والتصغير لسهولة الاستخدام. يتيح لك التطبيق تخصيص الأذكار واختيار أدعية مأثورة تناسب احتياجاتك اليومية، مع إمكانية البحث السريع للوصول إلى أي ذكر أو دعاء بسهولة.
+            <br><br> كما يقدم التطبيق أفضل أوقات الدعاء لتعظيم الاستفادة من أوقات الاستجابة، إلى جانب مقتطفات قرآنية تلهمك وتساعدك على تدبر معاني القرآن الكريم. يتميز التطبيق بتصميم بسيط وأنيق يجعل تجربة التسبيح والدعاء أكثر سهولة وراحة.</p>
+    </div>
+
+    <!-- البطاقة الثانية -->
+    <div class="glass-card">
+        <h1>خصوصية التطبيق</h1>
+        <hr style="margin-bottom: 17px;">
+        <a href="https://sites.google.com/view/uicode/%D8%A7%D9%84%D8%B5%D9%81%D8%AD%D8%A9-%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A%D8%A9">
+            سياسة خصوصية تطبيق تسابيح
+            <span style="margin-right: 16px;"><i class="fas fa-link"></i></span>
+        </a>
+    </div>
+
+    <!-- البطاقة الثالثة -->
+    <div class="glass-card">
+        <h1>تواصل معنا</h1>
+        <hr style="margin-bottom: 17px;">
+        <p>الموقع الالكتروني : <br><br> <span style="margin-right: 100px; font-weight: bold; font-size: clamp(20px, 2.5vw, 28px);">قريباً ....</span></p>
+    </div>
+
+    <script>
+        // تعديل ارتفاع الخلفية بناءً على عدد البطاقات وارتفاعها
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.glass-card');
+            let totalHeight = 300; // ارتفاع أساسي
+            
+            cards.forEach(card => {
+                totalHeight += card.offsetHeight + parseInt(window.getComputedStyle(card).marginBottom);
+            });
+            
+            // تحديد الارتفاع المناسب للخلفية
+            document.querySelector('.background').style.height = totalHeight + 'px';
+            
+            // يمكنك أيضًا تعديل متغير CSS إذا كنت تفضل ذلك
+            document.documentElement.style.setProperty('--background-height', `${totalHeight}px`);
+            
+            // إعادة حساب الارتفاع عند تغيير حجم النافذة
+            window.addEventListener('resize', function() {
+                let newHeight = 300;
+                cards.forEach(card => {
+                    newHeight += card.offsetHeight + parseInt(window.getComputedStyle(card).marginBottom);
+                });
+                document.querySelector('.background').style.height = newHeight + 'px';
+                document.documentElement.style.setProperty('--background-height', `${newHeight}px`);
+            });
+        });
+    </script>
+</body>
+</html>

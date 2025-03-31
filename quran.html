@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>مقتطفات قرآنية</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+@font-face {
+            font-family: "cairo";
+            src: url(font/Cairo-Regular.ttf);
+        }
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        body {
+            background-color: #96add6;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            font-family: "Amiri";
+            margin-bottom: 20px;
+            font-size: 31px;
+            color: #ad774c;
+        }
+        #hr2 {
+            width: 88%;
+            border: 1.7px solid #ad774c;
+            margin-bottom: 26px;
+        }
+        .quote-card {
+            background: #ad774c;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #fff;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            margin-bottom: 20px;
+        }
+        .quote-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .quote-card h2 {
+            font-family: "Amiri";
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 13px;
+        }
+        .quote-card p {
+            font-family: "Amiri";
+            font-size: 20px;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+        .buttons {
+            margin-top: 22px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .buttons button {
+            background: #96add6;
+            color: #fff;
+            border: none;
+            padding: 7.7px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: "cairo";
+            transition: background 0.3s;
+        }
+        .buttons button:hover {
+            background: #f0f0f0;
+        }
+        /* تأثير الظهور للبطاقات */
+        .hidden {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        .visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        #go {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 48px;
+        height: 48px;
+        background-color: white; /* لون الخلفية */
+        border-radius: 50%; /* لجعلها دائرية */
+        display: flex;
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s, transform 0.2s;
+    }
+
+    #go i {
+        color: #ad774c;
+        font-size: 24px;
+    }
+
+    #go:hover {
+        background-color: #8d5e3b; /* لون عند التمرير */
+        transform: scale(1.1);
+    }
+
+    #go:focus    {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+    @media (min-width:768px) and (max-width:1024px) {
+
+        h1{
+            font-size: 58px;
+        }
+
+        .quote-card h2{
+            font-size: 32px;
+        }
+        .quote-card p{
+            font-size: 29px;
+        }
+
+        .buttons button{
+            font-size: 21px;
+        }
+
+        #go{
+            bottom: 40px;
+            left: 40px;
+            width: 61px;
+            height: 61px;
+
+        }
+
+        #go i{
+            font-size: 30px;
+        }
+    }
+
+    </style>
+</head>
+<body>
+    <h1>📖 مقتطفات قرآنية 📖</h1>
+    <a href="index.html" id="go"><i class="fa-solid fa-arrow-left"></i></a>
+    <hr id="hr2">
+    
+    <div class="quote-card hidden">
+        <h2> الآية 255: البقرة</h2>
+        <p>"اللَّهُ لَا إِلٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ..."</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 1: الفاتحة</h2>
+        <p>"بِسْمِ اللَّٰهِ الرَّحْمَٰنِ الرَّحِيمِ"</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 102: آل عمران</h2>
+        <p>"يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ وَقُولُوا قَوْلًا سَدِيدًا"</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 23: الإسراء</h2>
+        <p>"وَقَضى رَبُّكَ أَلّا تَعبُدوا إِلّا إِيّاهُ وَبِالوالِدَينِ إِحسانًا..."</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 35: النور</h2>
+        <p>"اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ..."</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 21: الحديد</h2>
+        <p>"سَبَّحَ لَهُ مَا فِي السَّمَاوَاتِ وَالْأَرْضِ وَهُوَ الْعَزِيزُ الْحَكِيمُ"</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 29: النساء</h2>
+        <p>"يَا أَيُّهَا الَّذِينَ آمَنُوا لَا تَأْكُلُوا أَمْوَالَكُمْ بَيْنَكُمْ بِالْبَاطِلِ..."</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 60: الأنفال</h2>
+        <p>"وَأَعِدُّوا لَهُم مَّا اسْتَطَعْتُمْ مِنْ قُوَّةٍ وَمِنْ رِبَاطِ الْخَيْلِ..."</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 51: التوبة</h2>
+        <p>"قُل لَّن يُصِيبَنَا إِلَّا مَا كَتَبَ اللَّهُ لَنَا..."</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 27: الفتح</h2>
+        <p>"لَقَدْ صَدَقَ اللَّهُ رَسُولَهُ الرُّؤْيَا بِالْحَقِّ لَتَدْخُلُنَّ..."</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 10: الحشر</h2>
+        <p>"وَالَّذِينَ جَاءُوا مِنْ بَعْدِهِمْ يَقُولُونَ رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا..."</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 1: المؤمنون</h2>
+        <p>"قَدْ أَفْلَحَ الْمُؤْمِنُونَ"</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 13: الرحمن</h2>
+        <p>"فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ"</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 56: القصص</h2>
+        <p>"إِنَّكَ لَا تَهْدِي مَنْ أَحْبَبْتَ وَلَكِنَّ اللَّهَ يَهْدِي مَن يَشَاءُ..."</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 23: الإسراء</h2>
+        <p>"وَقَضى رَبُّكَ أَلّا تَعبُدوا إِلّا إِيّاهُ وَبِالوالِدَينِ إِحسانًا..."</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 17: البقرة</h2>
+        <p>"مَثَلُهُمْ كَمَثَلِ الَّذِي اسْتَوْقَدَ نَارًا..."</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 4: الطارق</h2>
+        <p>"وَالطَّارِقِ وَمَا أَدْرَاكَ مَا الطَّارِقُ"</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 35: الحشر</h2>
+        <p>"يُدْنِي مَن يَشَاءُ وَيُعَذِّبُ مَن يَشَاءُ وَاللَّهُ غَفُورٌ رَحِيمٌ"</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 21: الفيل</h2>
+        <p>"أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ"</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 27: العنكبوت</h2>
+        <p>"وَالَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ لَنُدْخِلَنَّهُمْ فِي صَالِحِينَ"</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 34: الصافات</h2>
+        <p>"وَجَاءَ رَبُّكَ وَالْمَلَكُ صَفًّا صَفًّا"</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 14: النحل</h2>
+        <p>"وَأَوْحَى رَبُّكَ إِلَى النَّحْلِ أَنْ اتَّخِذِي مِنَ الْجِبَالِ بُيُوتًا..."</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <div class="quote-card hidden">
+        <h2> الآية 5: المؤمنون</h2>
+        <p>"إِنَّمَا الْمُؤْمِنُونَ الَّذِينَ إِذَا ذُكِرَ اللَّهُ وَجِلَتْ قُلُوبُهُمْ..."</p>
+        <hr style="margin-top: 18px;">
+        <div class="buttons">
+            <button onclick="copyText(this)">نسخ 📋</button>
+        </div>
+    </div>
+    
+    <!-- إضافة المزيد من الآيات هنا -->
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+    <script>
+        function copyText(button) {
+            var text = button.closest('.quote-card').querySelector('p').innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                alert('تم النسخ بنجاح!');
+            }).catch(function(err) {
+                alert('فشل النسخ: ' + err);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll(".quote-card");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        entry.target.classList.remove("hidden");
+                    } else {
+                        entry.target.classList.remove("visible");
+                        entry.target.classList.add("hidden");
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -614,15 +614,22 @@ h1 {
         });
         
         function copyText(button) {
-            let text = button.parentElement.previousElementSibling.innerText;
-            let textarea = document.createElement("textarea");
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            alert("تم النسخ!");
-        }
+    var card = button.closest('.card'); // البحث عن أقرب عنصر بطاقة
+    var textToCopy = card.querySelector('h2').textContent + "\n" + card.querySelector('p').textContent; // استخراج النص
+    var tempInput = document.createElement("textarea"); // إنشاء عنصر مؤقت
+    tempInput.value = textToCopy; // تعيين النص المطلوب نسخه
+    document.body.appendChild(tempInput); // إضافته إلى الصفحة
+    tempInput.select(); // تحديد النص
+    document.execCommand("copy"); // تنفيذ أمر النسخ
+    document.body.removeChild(tempInput); // إزالة العنصر المؤقت
+
+    // تغيير النص إلى "تم النسخ" لفترة قصيرة
+    var originalText = button.innerHTML;
+    button.innerHTML = "✅ تم النسخ!";
+    setTimeout(function () {
+        button.innerHTML = originalText;
+    }, 3000);
+}
     </script>
 </body>
 </html>
